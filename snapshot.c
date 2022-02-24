@@ -1,8 +1,9 @@
 
 
+#include "macros.h"
+
 #include <string.h>
 #include <stdio.h>
-#include "macros.h"
 
 float snapshot_buffer[2048]={0};
 float *snapshot_wr_ptr = &snapshot_buffer[0];
