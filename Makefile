@@ -1,10 +1,15 @@
 
+PRE:=$(shell ./mk-headers.sh)
+PRE:=$(shell ./mk-shell.sh)
+SRC:=$(shell find -type f -name "*.c" -or -name "*.cpp" -or -name "*.asm")
+HDR:=$(shell find -type f -name "*.h" -or -name "*.hpp")
+RES:=$(shell find -type f -name "*.png")
+DIR:=$(shell find -L -mindepth 1 -type d -not -wholename "*/.*" -printf "-I %P ")
 
 CC:=gcc
 LIBS  := `pkg-config --libs   sdl2` -lm   
-CFLAGS:= `pkg-config --cflags sdl2` -O3 -Werror
-SRC:=$(shell find -L . -type f -name "*.c")
-HDR:=$(shell find -L . -type f -name "*.h")
+CFLAGS:= `pkg-config --cflags sdl2` -Werror $(DIR)
+CFLAGS+= -O3
 
 
 .PHONY: all
@@ -18,6 +23,7 @@ run : main
 
 
 OBS+=main.o
+OBS+=snapshot.o
 
 main.o: Makefile $(SRC) $(HDR)
 
@@ -31,7 +37,7 @@ main: $(OBS)
 .PHONY: clean cl
 clean cl :
 	file * | awk '/ELF/ { gsub(/:.*/,"") ; print }' | xargs -r rm
-	rm -f deps.inc $(DYN)
+	rm -fR dyn
 
 
 .PHONY: rebuild re
