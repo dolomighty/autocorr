@@ -13,7 +13,7 @@ all : main
 
 .PHONY: run
 run : main
-	parec | ./$^
+	./$^
 
 
 
