@@ -3,9 +3,6 @@
 #include <unistd.h>
 #include <SDL2/SDL.h>
 
-#define     WID     800
-#define     HGT     300
-
 SDL_Renderer *renderer;
 
 
@@ -13,6 +10,7 @@ SDL_Renderer *renderer;
 #include "loop.c"
 #include "audio_in_callback.c"
 
+#include "macros.h"
 
 int main( int argc , char *argv[] ){ 
 

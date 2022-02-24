@@ -1,9 +1,8 @@
 
 
-#define COUNT(ARR) (sizeof(ARR)/sizeof(ARR[0]))
-
 #include <string.h>
 #include <stdio.h>
+#include "macros.h"
 
 float snapshot_buffer[2048]={0};
 float *snapshot_wr_ptr = &snapshot_buffer[0];
@@ -18,7 +17,7 @@ void snapshot_wr( float v ) // HEADER
 }
 
 
-void snapshot_rd( float *dst , int samples ) // HEADER
+void snapshot_rd( float *dst , int samples )  // HEADER
 {
   float *src = snapshot_wr_ptr-samples;
   if( src < &snapshot_buffer[0]){

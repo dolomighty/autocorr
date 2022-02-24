@@ -12,20 +12,3 @@ void audio_in_callback( void *userdata , Uint8 *stream , int len_bytes ){
 }
 
 
-
-
-//void autocorr( float *out , int out_len ){
-//  float buf[out_len*2];
-//  snapshot_rd(buf,COUNT(out));
-//  // naive impl. O(n²)
-//  for(int lag=0;lag<out_len;lag++){
-//    float sqdiff = 0;
-//    for(int i=0;i<out_len;i++){
-//      float xc = buf[i]-buf[i+lag];
-//      sqdiff += xc*xc;
-//    }
-//    *out++ = sqdiff;
-//  }
-//}
-
-
